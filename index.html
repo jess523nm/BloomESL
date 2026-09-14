@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fff7ef" />
+  <title>Bloom ESL | Student Lessons</title>
+  <meta name="description" content="Bloom ESL student lesson hub: start with the pre-test, then open Lessons 1–50." />
+  <style>
+    :root {
+      --cream: #fff8ef;
+      --paper: #fffdf9;
+      --ink: #253247;
+      --blue: #9ed8f4;
+      --blue-deep: #315f8d;
+      --pink: #f6bfd4;
+      --peach: #ffd0b5;
+      --mint: #c8ead7;
+      --lavender: #d9cff4;
+      --butter: #ffe7a8;
+      --coral: #e9847a;
+      --white: #ffffff;
+      --shadow: 0 12px 28px rgba(49, 95, 141, 0.13);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12px 12px, rgba(49,95,141,.08) 1.5px, transparent 1.6px) 0 0 / 24px 24px,
+        var(--cream);
+      font-family: "Trebuchet MS", "Avenir Next", Avenir, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 8px;
+      z-index: 1000;
+      background: var(--ink);
+      color: white;
+      padding: .7rem 1rem;
+      border-radius: 12px;
+    }
+    .skip-link:focus { left: 8px; }
+
+    .shell {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 34px 0 20px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      border: 3px solid rgba(49, 95, 141, .16);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 58px);
+      text-align: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      filter: blur(.2px);
+      opacity: .58;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      background: var(--pink);
+      top: -74px;
+      left: -46px;
+    }
+
+    .hero::after {
+      background: var(--blue);
+      right: -42px;
+      bottom: -82px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .48rem .82rem;
+      border-radius: 999px;
+      background: var(--butter);
+      border: 2px solid rgba(37, 50, 71, .10);
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    h1 {
+      margin: 14px 0 4px;
+      color: var(--blue-deep);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.9rem, 8vw, 6.1rem);
+      line-height: .95;
+      letter-spacing: .08em;
+      text-shadow: 0 3px 0 white;
+    }
+
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 680px;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 700;
+    }
+
+    .tiny-stars {
+      margin-top: 15px;
+      letter-spacing: .35em;
+      color: var(--coral);
+      font-size: 1.1rem;
+    }
+
+    main { padding: 12px 0 54px; }
+
+    .start-card {
+      margin: 22px 0 30px;
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--lavender), #eee9fb);
+      border: 3px solid rgba(37, 50, 71, .08);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      box-shadow: var(--shadow);
+    }
+
+    .start-card h2,
+    .section-title h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--blue-deep);
+    }
+
+    .start-card h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    .start-card p { margin: 8px 0 0; font-weight: 650; }
+
+    .primary-button {
+      display: inline-flex;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .9rem 1.25rem;
+      border-radius: 18px;
+      border: 3px solid var(--ink);
+      background: var(--butter);
+      color: var(--ink);
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 5px 5px 0 var(--ink);
+      transition: transform .16s ease, box-shadow .16s ease;
+      white-space: nowrap;
+    }
+
+    .primary-button:hover,
+    .primary-button:focus-visible {
+      transform: translate(2px, 2px);
+      box-shadow: 3px 3px 0 var(--ink);
+      outline: none;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 34px 0 18px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+    }
+
+    .section-title p {
+      margin: 7px auto 0;
+      max-width: 720px;
+      font-weight: 650;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .lesson-card {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid rgba(37, 50, 71, .12);
+      border-radius: 22px;
+      text-decoration: none;
+      text-align: center;
+      padding: 14px 10px;
+      box-shadow: 0 7px 0 rgba(49, 95, 141, .10);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    .lesson-card.available:hover,
+    .lesson-card.available:focus-visible {
+      transform: translateY(-4px) rotate(-.4deg);
+      box-shadow: 0 11px 0 rgba(49, 95, 141, .13);
+      border-color: rgba(49, 95, 141, .45);
+      outline: none;
+    }
+
+    .lesson-number {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+      line-height: 1;
+      color: var(--blue-deep);
+      font-weight: 700;
+    }
+
+    .lesson-label {
+      display: block;
+      margin-top: 7px;
+      font-weight: 900;
+      font-size: .95rem;
+    }
+
+    .lesson-note {
+      display: block;
+      margin-top: 4px;
+      font-size: .72rem;
+      opacity: .7;
+      font-weight: 700;
+    }
+
+    .available:nth-child(5n+1) { background: var(--pink); }
+    .available:nth-child(5n+2) { background: var(--mint); }
+    .available:nth-child(5n+3) { background: var(--butter); }
+    .available:nth-child(5n+4) { background: var(--blue); }
+    .available:nth-child(5n+5) { background: var(--peach); }
+
+    .lesson-card.coming-soon {
+      background: rgba(255,255,255,.72);
+      color: rgba(37,50,71,.52);
+      box-shadow: none;
+      border-style: dashed;
+      cursor: default;
+    }
+
+    .lesson-card.coming-soon .lesson-number { color: rgba(49,95,141,.52); }
+
+    .help-card {
+      margin: 32px 0 0;
+      background: var(--paper);
+      border: 2px solid rgba(37, 50, 71, .1);
+      border-radius: 22px;
+      padding: 18px 22px;
+      text-align: center;
+      font-size: .92rem;
+    }
+
+    .help-card strong { color: var(--blue-deep); }
+
+    footer {
+      padding: 0 0 42px;
+      text-align: center;
+      font-size: .85rem;
+      opacity: .78;
+    }
+
+    @media (max-width: 860px) {
+      .lesson-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .start-card { grid-template-columns: 1fr; text-align: center; }
+      .primary-button { width: 100%; }
+      .lesson-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 460px) {
+      .shell { width: min(100% - 18px, 1120px); }
+      .hero { border-radius: 24px; }
+      .lesson-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .lesson-card { min-height: 105px; border-radius: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#lessons">Skip to lessons</a>
+
+  <header class="shell">
+    <section class="hero" aria-labelledby="site-title">
+      <div class="eyebrow">✦ Student Learning Hub ✦</div>
+      <h1 id="site-title">BLOOM</h1>
+      <div class="subtitle">Learn English through stories, comics, and guided practice.</div>
+      <div class="tiny-stars" aria-hidden="true">★ ✿ ★ ✿ ★</div>
+    </section>
+  </header>
+
+  <main class="shell">
+    <section class="start-card" aria-labelledby="start-title">
+      <div>
+        <h2 id="start-title">Start here: take the pre-test</h2>
+        <p>Finish the pre-test first. Then come back here and choose your lesson.</p>
+      </div>
+      <a class="primary-button" href="https://forms.gle/NV2UBcLm7mUisoq88" target="_blank" rel="noopener">
+        Take the Pre-Test ↗
+      </a>
+    </section>
+
+    <section id="lessons" aria-labelledby="lessons-title">
+      <div class="section-title">
+        <h2>Choose Your Lesson</h2>
+        <p>Tap a lesson to open the Bloom guidebook right where that lesson begins.</p>
+      </div>
+      <div id="lessonGrid" class="lesson-grid" aria-live="polite"></div>
+    </section>
+
+    <aside class="help-card">
+      <strong>Having trouble?</strong> If your PDF opens on the first page instead of the lesson page, use the page number shown on the lesson button and jump there in the PDF viewer.
+    </aside>
+  </main>
+
+  <footer class="shell">
+    Bloom ESL • Beginning English • Lessons 1–50
+  </footer>
+
+  <script>
+    // Add each lesson here as you create future guidebooks.
+    // "page" means the physical PDF page number used by the browser viewer.
+    const lessonLinks = {
+      1: { file: "assets/bloom-guidebook-1-lessons-1-5.pdf", page: 3, title: "Introductions" },
+      2: { file: "assets/bloom-guidebook-1-lessons-1-5.pdf", page: 8, title: "The Problem" },
+      3: { file: "assets/bloom-guidebook-1-lessons-1-5.pdf", page: 11, title: "Food" },
+      4: { file: "assets/bloom-guidebook-1-lessons-1-5.pdf", page: 16, title: "Origins" },
+      5: { file: "assets/bloom-guidebook-1-lessons-1-5.pdf", page: 21, title: "Actions" },
+      6: { file: "assets/bloom-guidebook-2-lessons-6-10.pdf", page: 3, title: "Feelings" },
+      7: { file: "assets/bloom-guidebook-2-lessons-6-10.pdf", page: 8, title: "Animals" },
+      8: { file: "assets/bloom-guidebook-2-lessons-6-10.pdf", page: 14, title: "The Continents" },
+      9: { file: "assets/bloom-guidebook-2-lessons-6-10.pdf", page: 22, title: "Sports" },
+      10: { file: "assets/bloom-guidebook-2-lessons-6-10.pdf", page: 28, title: "The Alphabet" },
+      11: { file: "assets/bloom-guidebook-3-lessons-11-15.pdf", page: 3, title: "More Actions" },
+      12: { file: "assets/bloom-guidebook-3-lessons-11-15.pdf", page: 9, title: "Professions" },
+      13: { file: "assets/bloom-guidebook-3-lessons-11-15.pdf", page: 17, title: "Seasons" },
+      14: { file: "assets/bloom-guidebook-3-lessons-11-15.pdf", page: 26, title: "Clothing" },
+      15: { file: "assets/bloom-guidebook-3-lessons-11-15.pdf", page: 33, title: "Places" }
+    };
+
+    const grid = document.getElementById("lessonGrid");
+
+    for (let lesson = 1; lesson <= 50; lesson++) {
+      const info = lessonLinks[lesson];
+
+      if (info) {
+        const link = document.createElement("a");
+        link.className = "lesson-card available";
+        link.href = `${info.file}#page=${info.page}&zoom=page-width`;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute("aria-label", `Open Lesson ${lesson}: ${info.title}, PDF page ${info.page}`);
+        link.innerHTML = `
+          <span class="lesson-number">${lesson}</span>
+          <span class="lesson-label">${info.title}</span>
+          <span class="lesson-note">PDF page ${info.page}</span>
+        `;
+        grid.appendChild(link);
+      } else {
+        const card = document.createElement("div");
+        card.className = "lesson-card coming-soon";
+        card.setAttribute("aria-disabled", "true");
+        card.innerHTML = `
+          <span class="lesson-number">${lesson}</span>
+          <span class="lesson-label">Lesson ${lesson}</span>
+          <span class="lesson-note">Coming soon</span>
+        `;
+        grid.appendChild(card);
+      }
+    }
+  </script>
+</body>
+</html>
